@@ -1,5 +1,3 @@
-![oats-icon](https://user-images.githubusercontent.com/1951843/47456353-42314880-d7a2-11e8-8fb1-81815ba78353.png)
-
 # ODM Automated Testing Suite
 
 An intuitive set of tools and scripts to test and analyze datasets processed with ODM favoring convention over configuration.
