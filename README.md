@@ -1,8 +1,8 @@
 ![oats-icon](https://user-images.githubusercontent.com/1951843/47456353-42314880-d7a2-11e8-8fb1-81815ba78353.png)
 
-# OpenDroneMap Automated Testing Suite
+# ODM Automated Testing Suite
 
-An intuitive set of tools and scripts to test and analyze datasets processed with OpenDroneMap favoring convention over configuration.
+An intuitive set of tools and scripts to test and analyze datasets processed with ODM favoring convention over configuration.
 
 ## Requirements
 
@@ -13,20 +13,20 @@ You will need a working installation of `docker` for your environment. Please vi
 ## Getting Started
 
 ```bash
-git clone https://github.com/OpenDroneMap/oats --depth 1
+git clone https://github.com/WebODM/oats --depth 1
 cd oats
 ./run --help
 ```
 
 Upon startup `run` will attempt to download and install any missing dependency, including [bats](https://github.com/sstephenson/bats), `wget`, `rsync`, `sed` and `unzip` if they are missing.
 
-To test the `latest` tag release of OpenDroneMap on all defined datasets, simply run:
+To test the `latest` tag release of ODM on all defined datasets, simply run:
 
 ```bash
 ./run all
 ```
 
-This command will download the datasets, run the `opendronemap/opendronemap:latest` docker image against each dataset and check that the processing succeeded.
+This command will download the datasets, run the `ODM/ODM:latest` docker image against each dataset and check that the processing succeeded.
 
 ## Test Your Datasets
 
@@ -69,7 +69,7 @@ After the call to `$run_test` is completed you can perform further checks such a
 
 Checks that fail will be flagged by the testing suite.
 
-Don't forget to open a [pull request](https://github.com/OpenDroneMap/oats/compare) to share your dataset with the community when you are ready! :pray: :+1:
+Don't forget to open a [pull request](https://github.com/WebODM/oats/compare) to share your dataset with the community when you are ready! :pray: :+1:
 
 ## Create Groups
 
@@ -83,13 +83,13 @@ You can select a subset of datasets within a group by using the `--datasets` opt
 
 First selects all datasets defined in `groups/all.bash` and then filters out only those matching the name `brighton` and `sheffield_park_1`. The end result in this case is to run two test cases (`brighton` and `sheffield_park_1`).
 
-## Test Multiple Versions of OpenDroneMap
+## Test Multiple Versions of ODM
 
-You can test multiple OpenDroneMap versions against one or more datasets. First build docker images for each OpenDroneMap version you want to test.
+You can test multiple ODM versions against one or more datasets. First build docker images for each ODM version you want to test.
 
 ```bash
-cd OpenDroneMap/
-docker build -t opendronemap/opendronemap:myversion .
+cd ODM/
+docker build -t ODM/ODM:myversion .
 ```
 
 Then pass the `--tags` parameter to `run`:
@@ -128,7 +128,7 @@ We have great plans for OATS. Some of them include:
 - [ ] Ability to leverage the cloud to process tasks
 - [ ] Ability to process tasks in parallel
 - [X] Test groups for defining subset of tasks (small memory footprint, large memory footprint, insane memory footprint, trees, farmland, etc.)
-- [ ] Your own ideas, [let us know](https://github.com/OpenDroneMap/oats/issues)!
+- [ ] Your own ideas, [let us know](https://github.com/WebODM/oats/issues)!
 
 ## Windows 10 WSL Quirks
 
@@ -143,7 +143,7 @@ cd /c/path/to/oats
 ``` 
 This is related to a problem with docker volumes.
 
-2. Pass the `--use_local_volume` flag to all invocations of `./run`. Docker bind mounts on Windows tend to "lag" and OpenDroneMap results could end up being corrupted or will not process entirely.
+2. Pass the `--use_local_volume` flag to all invocations of `./run`. Docker bind mounts on Windows tend to "lag" and ODM results could end up being corrupted or will not process entirely.
 ```bash
 ./run all --use_local_volume
 ```
