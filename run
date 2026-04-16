@@ -4,7 +4,7 @@ source commons.bash
 # Parse args
 export FILTER_DATASETS=""
 export TAGS="latest"
-export DOCKER_IMAGE="opendronemap/odm"
+export DOCKER_IMAGE="webodm/odx"
 export CMD_OPTIONS=""
 export CLEAR=NO
 export BUILD=NO
@@ -79,7 +79,7 @@ set -- "${POSITIONAL[@]}" # restore positional parameter
 usage(){
   echo "Usage: $0 [options] <group>"
   echo
-  echo "OpenDroneMap Automated Testing Suite."
+  echo "ODX Automated Testing Suite."
   echo
   echo "Group:"
   for group in groups/*.bash; do
@@ -90,8 +90,8 @@ usage(){
   echo "Options:"
   echo "	--datasets <dataset1,dataset2,...>	Test only the specified datasets from the group"
   echo "	--tags	<tag1,tag2,...>	docker tag images to test. Each tag is tested against each dataset. (default: latest)"
-  echo "	--options	\"--odm-option 1 --rerun-from odm_meshing ...\"	Options to append to each OpenDroneMap invocation (for example to rerun from a certain step of the pipeline). Make sure to add these in quotes. (default: \"\")"
-  echo "	--image_name	<docker image>	Docker image to use. (default: opendronemap/odm)"
+  echo "	--options	\"--odx-option 1 --rerun-from odm_meshing ...\"	Options to append to each WebODM invocation (for example to rerun from a certain step of the pipeline). Make sure to add these in quotes. (default: \"\")"
+  echo "	--image_name	<docker image>	Docker image to use. (default: webodm/odx)"
   echo "	--use_local_volume	Copy dataset inputs to a temporary location within the docker container instead of directly binding to the host directory. Windows users should use this option to avoid having tests failing due to missing files. (default: no)"
   echo "	--clear	Delete previous test results. (default: no)"
   echo "	--build	Build these branches (comma separated) before running tests. (default: no)"
@@ -151,14 +151,14 @@ if [ "$NUKE" == "YES" ]; then
 fi
 
 if [ "$BUILD" != "NO" ]; then
-    if [ ! -e ./ODM_src ]; then
-        git clone https://github.com/OpenDroneMap/ODM ODM_src
+    if [ ! -e ./ODX_src ]; then
+        git clone https://github.com/WebODM/ODX ODX_src
     fi
-    cd ODM_src
+    cd ODX_src
 
     for branch in "${BUILD[@]}"; do
         git checkout $branch
-        docker build -t opendronemap/odm:$branch -f portable.Dockerfile . --no-cache
+        docker build -t webodm/odx:$branch -f portable.Dockerfile . --no-cache
     done
 
     cd ..

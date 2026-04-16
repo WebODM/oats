@@ -1,6 +1,6 @@
-# ODM Automated Testing Suite
+# ODX Automated Testing Suite
 
-An intuitive set of tools and scripts to test and analyze datasets processed with ODM favoring convention over configuration.
+An intuitive set of tools and scripts to test and analyze datasets processed with ODX favoring convention over configuration.
 
 ## Requirements
 
@@ -18,7 +18,7 @@ cd oats
 
 Upon startup `run` will attempt to download and install any missing dependency, including [bats](https://github.com/sstephenson/bats), `wget`, `rsync`, `sed` and `unzip` if they are missing.
 
-To test the `latest` tag release of ODM on all defined datasets, simply run:
+To test the `latest` tag release of ODX on all defined datasets, simply run:
 
 ```bash
 ./run all
@@ -81,13 +81,13 @@ You can select a subset of datasets within a group by using the `--datasets` opt
 
 First selects all datasets defined in `groups/all.bash` and then filters out only those matching the name `brighton` and `sheffield_park_1`. The end result in this case is to run two test cases (`brighton` and `sheffield_park_1`).
 
-## Test Multiple Versions of ODM
+## Test Multiple Versions of ODX
 
-You can test multiple ODM versions against one or more datasets. First build docker images for each ODM version you want to test.
+You can test multiple ODX versions against one or more datasets. First build docker images for each ODX version you want to test.
 
 ```bash
-cd ODM/
-docker build -t ODM/ODM:myversion .
+cd ODX/
+docker build -t webodm/odx:myversion .
 ```
 
 Then pass the `--tags` parameter to `run`:
@@ -141,7 +141,7 @@ cd /c/path/to/oats
 ``` 
 This is related to a problem with docker volumes.
 
-2. Pass the `--use_local_volume` flag to all invocations of `./run`. Docker bind mounts on Windows tend to "lag" and ODM results could end up being corrupted or will not process entirely.
+2. Pass the `--use_local_volume` flag to all invocations of `./run`. Docker bind mounts on Windows tend to "lag" and ODX results could end up being corrupted or will not process entirely.
 ```bash
 ./run all --use_local_volume
 ```
