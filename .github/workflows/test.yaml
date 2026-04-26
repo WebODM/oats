@@ -1,4 +1,4 @@
-name: Test ODM
+name: Test ODX
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     tags:
     - v*
   
-  # Triggered by ODM build (after docker push)
+  # Triggered by ODX build (after docker push)
   workflow_dispatch:
 
 jobs:
