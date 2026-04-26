@@ -24,7 +24,7 @@ To test the `latest` tag release of ODX on all defined datasets, simply run:
 ./run all
 ```
 
-This command will download the datasets, run the `ODM/ODM:latest` docker image against each dataset and check that the processing succeeded.
+This command will download the datasets, run the `webodm/odx:latest` docker image against each dataset and check that the processing succeeded.
 
 ## Test Your Datasets
 
